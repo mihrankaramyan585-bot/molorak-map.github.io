@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Քարտեզ՝ Տարբեր Նշաններով Տեսարժան Վայրեր</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="icon" href="data:image/jpeg;base64,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">
+    <style>
+        body { margin:0; padding:0; font-family: Arial, sans-serif; background:#f0f0f0; }
+        #map { height: 100vh; } 
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+            min-width: 260px;
+        }
+        #controls h3 { margin: 0 0 10px; font-size: 1.1em; }
+        button {
+            margin: 4px 0;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f8f8f8;
+            cursor: pointer;
+        }
+        button:hover { background: #e0e0e0; }
+        #totalDistance {
+            font-weight: bold;
+            color: #d32f2f;
+            margin: 10px 0 6px;
+            font-size: 1.15em;
+        }
+        .distance-label {
+            background: rgba(0,0,0,0.65);
+            color: white;
+            padding: 3px 7px;
+            border-radius: 10px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="controls">
+    <h3>Քարտեզի գործիքներ</h3>
+    <div id="totalDistance">Ընդհանուր հեռավորություն: 0 կմ</div>
+    <button onclick="clearPath()">Մաքրել ուղին</button>
+    <button onclick="undoLastPoint()">← Հեռացնել վերջին կետը</button>
+    <button id="toggleLabelsBtn" onclick="toggleLabels()">Labels միացնել/անջատել</button>
+    <button id="toggleAttractionsBtn" onclick="toggleAttractions()">Տեսարժան վայրեր ցույց տալ/թաքցնել</button>
+    <p style="font-size:0.85em; color:#555; margin-top:12px;">
+        Սեղմիր քարտեզի վրա՝ սովորական կետ ավելացնելու համար<br>
+        Տեսարժան վայրերը <strong>կանաչ</strong> նշաններով են
+    </p>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// Գլոբալ փոփոխականներ
+let map, pathLine, markers = [], labels = [], showLabels = true;
+let attractionsLayer = L.layerGroup();
+let showAttractions = true;
+
+// Օգտատիրոջ կետերի համար՝ ստանդարտ (կարմիր/նարնջագույն)
+const userIcon = L.Icon.Default.prototype;
+
+// Տեսարժան վայրերի համար՝ կանաչ (green) և մի փոքր ավելի մեծ
+const attractionIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [32, 52],       // ավելի մեծ՝ ավելի լավ տարբերվի
+    iconAnchor: [16, 52],
+    popupAnchor: [1, -48],
+    shadowSize: [52, 52]
+});
+
+// Քարտեզ
+map = L.map('map', { zoomControl: true }).setView([40.1872, 44.5152], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
+}).addTo(map);
+
+// Պաթ գիծ
+pathLine = L.polyline([], { color: '#e91e63', weight: 5, opacity: 0.85 }).addTo(map);
+
+// Տեսարժան վայրեր (նույն ցանկը)
+const attractions = [
+    { name: "Հանրապետության հրապարակ", lat: 40.1772, lng: 44.5122, desc: "Երևանի կենտրոնը, գեղեցիկ շատրվաններով" },
+    { name: "Կասկադ", lat: 40.1855, lng: 44.5150, desc: "Հայտնի աստիճաններ՝ արվեստի կենտրոնով" },
+    { name: "Ծիծեռնակաբերդ", lat: 40.1870, lng: 44.4900, desc: "Հայոց ցեղասպանության հուշահամալիր" },
+    { name: "Մատենադարան", lat: 40.1920, lng: 44.5180, desc: "Հին ձեռագրերի ինստիտուտ-թանգարան" },
+    { name: "Մայր Հայաստան", lat: 40.1950, lng: 44.5320, desc: "Հուշարձան՝ հիանալի տեսարանով" },
+    { name: "Օպերա և Բալետ", lat: 40.1860, lng: 44.5145, desc: "Ալեքսանդր Թամանյանի գլուխգործոցը" },
+    { name: "Կապույտ մզկիթ", lat: 40.1785, lng: 44.5060, desc: "18-րդ դարի մզկիթ Երևանում" },
+    { name: "Վերնիսաժ", lat: 40.1810, lng: 44.5140, desc: "Հայկական արհեստների շուկա" }
+];
+
+function addAttractions() {
+    attractionsLayer.clearLayers();
+    if (!showAttractions) return;
+
+    attractions.forEach(place => {
+        L.marker([place.lat, place.lng], { icon: attractionIcon })
+            .bindPopup(`<b>${place.name}</b><br>${place.desc}`)
+            .addTo(attractionsLayer);
+    });
+    attractionsLayer.addTo(map);
+}
+
+addAttractions();
+
+// Օգտատիրոջ կետ ավելացնել (ստանդարտ icon-ով)
+map.on('click', function(e) {
+    addPoint(e.latlng);
+});
+
+function addPoint(latlng) {
+    const marker = L.marker(latlng, { 
+        draggable: true,
+        icon: userIcon           // ← default կարմիր
+    }).addTo(map);
+
+    marker.on('dragend', updatePath);
+    marker.bindPopup("Քո կետը").openPopup();
+
+    markers.push(marker);
+    updatePath();
+
+    if (markers.length >= 2) {
+        const prev = markers[markers.length-2].getLatLng();
+        const dist = prev.distanceTo(latlng) / 1000;
+        const label = L.marker(latlng, {
+            icon: L.divIcon({
+                className: 'distance-label',
+                html: dist.toFixed(2) + ' կմ',
+                iconSize: [80, 30],
+                iconAnchor: [40, -10]
+            }),
+            interactive: false
+        }).addTo(map);
+        labels.push(label);
+    }
+}
+
+// մնացած ֆունկցիաները նույնն են (updatePath, clearPath, undoLastPoint, toggleLabels, toggleAttractions)
+function updatePath() {
+    if (markers.length < 1) return;
+
+    const latlngs = markers.map(m => m.getLatLng());
+    pathLine.setLatLngs(latlngs);
+
+    let total = 0;
+    let segmentDistances = [];
+
+    for (let i = 1; i < latlngs.length; i++) {
+        const d = latlngs[i-1].distanceTo(latlngs[i]);
+        total += d;
+        segmentDistances.push(d / 1000);
+    }
+
+    const unit = total < 1000 ? 'մ' : 'կմ';
+    const value = total < 1000 ? total.toFixed(0) : (total/1000).toFixed(2);
+    document.getElementById('totalDistance').innerText =
+        `Ընդհանուր հեռավորություն: ${value} ${unit}`;
+
+    if (showLabels) {
+        labels.forEach((label, i) => {
+            const dist = segmentDistances[i];
+            label.setLatLng(markers[i+1].getLatLng());
+            label.setIcon(L.divIcon({
+                className: 'distance-label',
+                html: dist.toFixed(2) + ' կմ',
+                iconSize: [80, 30],
+                iconAnchor: [40, -10]
+            }));
+        });
+    }
+
+    if (markers.length > 0) {
+        const last = markers[markers.length-1];
+        last.setPopupContent(`Ընդհանուր՝ ${value} ${unit}<br>Կետ #${markers.length}`);
+    }
+}
+
+function clearPath() {
+    markers.forEach(m => map.removeLayer(m));
+    labels.forEach(l => map.removeLayer(l));
+    markers = [];
+    labels = [];
+    pathLine.setLatLngs([]);
+    document.getElementById('totalDistance').innerText = "Ընդհանուր հեռավորություն: 0 կմ";
+}
+
+function undoLastPoint() {
+    if (markers.length === 0) return;
+    const lastMarker = markers.pop();
+    map.removeLayer(lastMarker);
+    if (labels.length > 0) {
+        const lastLabel = labels.pop();
+        map.removeLayer(lastLabel);
+    }
+    updatePath();
+}
+
+function toggleLabels() {
+    showLabels = !showLabels;
+    if (!showLabels) {
+        labels.forEach(l => map.removeLayer(l));
+    } else {
+        updatePath();
+    }
+    document.getElementById('toggleLabelsBtn').innerText =
+        showLabels ? "Labels անջատել" : "Labels միացնել";
+}
+
+function toggleAttractions() {
+    showAttractions = !showAttractions;
+    if (showAttractions) {
+        addAttractions();
+        document.getElementById('toggleAttractionsBtn').innerText = "Տեսարժան վայրեր թաքցնել";
+    } else {
+        attractionsLayer.clearLayers();
+        document.getElementById('toggleAttractionsBtn').innerText = "Տեսարժան վայրեր ցույց տալ";
+    }
+}
+</script>
+</body>
+</html>
